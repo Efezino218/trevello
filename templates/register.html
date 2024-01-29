@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>SignUp</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <h2>Sign Up Below</h2>
+
+    {% for message in messages %}
+        <h5 class="error-message">{{ message }}</h5>
+    {% endfor %}
+
+    <form action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+
+        <label for="email">Email:</label>
+        <input type="text" name="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" name="password" required>
+
+        <label for="password2">Confirm Password:</label>
+        <input type="password" name="password2" required>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    form {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        width: 300px;
+    }
+
+    h2 {
+        text-align: center;
+        position: absolute; /* Added */
+        top: 80px; /* Adjust as needed */
+        left: 0;
+        right: 0;
+    }
+
+    .error-message {
+        text-align: center;
+        position: absolute; /* Added */
+        top: 20%; /* Adjust as needed */
+        left: 0;
+        right: 0;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: calc(100% - 10px);
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+
+    .error-message {
+        color: red;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+</style>
+</html>
